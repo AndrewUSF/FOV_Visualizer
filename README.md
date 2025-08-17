@@ -2,7 +2,7 @@
 
 Explore how different fields of view feel on screen. Move the sliders to change the horizontal, vertical, or diagonal field of view and see the result instantly.
 
-Open the app: 
+Open the app: https://andrewusf.github.io/FOV_Visualizer/
 
 ## What you can do
 
