@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FOV Visualizer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Field of View Visualizer</h1>
+    <p>Explore what different horizontal, vertical, and diagonal fields of view might feel like.</p>
+  </header>
+
+  <main class="app">
+    <section class="controls">
+      <div class="control-row">
+        <label for="mode">Control Mode</label>
+        <select id="mode">
+          <option value="hv">Set Horizontal + Vertical</option>
+          <option value="hd">Set Horizontal + Diagonal</option>
+          <option value="vd">Set Vertical + Diagonal</option>
+        </select>
+      </div>
+
+      <div class="control-grid">
+        <div class="control">
+          <label for="hFov">Horizontal FOV (°)</label>
+          <input id="hFov" type="number" step="0.1" min="1" max="200" value="100" />
+          <input id="hFovRange" type="range" min="1" max="200" step="0.1" value="100" />
+        </div>
+
+        <div class="control">
+          <label for="vFov">Vertical FOV (°)</label>
+          <input id="vFov" type="number" step="0.1" min="1" max="200" value="80" />
+          <input id="vFovRange" type="range" min="1" max="200" step="0.1" value="80" />
+        </div>
+
+        <div class="control">
+          <label for="dFov">Diagonal FOV (°)</label>
+          <input id="dFov" type="number" step="0.1" min="1" max="260" value="125.3" />
+          <input id="dFovRange" type="range" min="1" max="260" step="0.1" value="125.3" />
+        </div>
+
+        <div class="control">
+          <label>Aspect Ratio (W:H)</label>
+          <div class="aspect">
+            <input id="aspectW" type="number" min="1" step="1" value="16" />
+            <span>:</span>
+            <input id="aspectH" type="number" min="1" step="1" value="9" />
+            <select id="aspectPreset">
+              <option value="custom">Custom</option>
+              <option value="16:9" selected>16:9</option>
+              <option value="4:3">4:3</option>
+              <option value="1:1">1:1</option>
+              <option value="21:9">21:9</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control">
+          <label for="scale">Scale (deg per 100px)</label>
+          <input id="scale" type="range" min="5" max="60" step="1" value="20" />
+          <div class="hint" id="scaleHint">20° / 100px</div>
+        </div>
+
+        <div class="control toggles">
+          <label>Overlays</label>
+          <label class="toggle"><input id="showGrid" type="checkbox" checked /> Angular grid</label>
+          <label class="toggle"><input id="showRoom" type="checkbox" checked /> Perspective room</label>
+          <label class="toggle"><input id="showDiag" type="checkbox" checked /> Diagonal guides</label>
+          <label class="toggle"><input id="dimOutside" type="checkbox" checked /> Dim outside FOV</label>
+        </div>
+      </div>
+
+      <details class="info">
+        <summary>How is diagonal FOV computed?</summary>
+        <p>
+          For a rectilinear projection, the relationship between horizontal (H), vertical (V), and diagonal (D)
+          fields of view is: tan(D/2)^2 = tan(H/2)^2 + tan(V/2)^2. This lets us solve for any one given the other two.
+        </p>
+      </details>
+    </section>
+
+    <section class="stage">
+      <canvas id="canvas"></canvas>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div>
+      Built for visualizing fields of view.
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
