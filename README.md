@@ -27,3 +27,34 @@ The tool runs in modern browsers like Chrome, Edge, Firefox, and Safari.
 ## Feedback
 
 Spotted an issue or have an idea to improve it? Feel free to open an issue or share feedback.
+
+## Clone and run locally
+
+Prerequisites: Git and a modern browser. A simple local server is optional but recommended.
+
+1) Clone the repository
+
+```bash
+git clone https://github.com/AndrewUSF/FOV_Visualizer.git
+```
+
+2) Move into the project directory
+
+```bash
+cd FOV_Visualizer
+```
+
+3) Run it locally (pick one)
+
+- Option A: Open `index.html` directly in your browser
+- Option B: Serve with a simple local server
+  - Python (3.x):
+    ```bash
+    python3 -m http.server 8000
+    ```
+    Then open http://localhost:8000 in your browser
+  - Node (npx):
+    ```bash
+    npx serve -l 8000
+    ```
+    Then open http://localhost:8000 in your browser
